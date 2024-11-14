@@ -1,0 +1,79 @@
+.corpo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.corpo-card h2 {
+    color: rgba(0, 0, 0, 0.911);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Organiza os cards em três colunas */
+    gap: 8vw;
+    justify-items: center; /* Centraliza os cards em cada coluna */
+    width: 100%;
+    max-width: 1200px; /* Define uma largura máxima para limitar o espaço */
+    margin-top: 10vh;
+}
+
+.card {
+    background-color: rgba(241, 55, 55, 0.904);
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para suavizar a mudança */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    /* Efeito de sombra inicial */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito ao passar o mouse */
+.card:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do card levemente */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra para simular "elevação" */
+}
+
+.card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: rgb(245, 245, 245);
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: black;
+    margin: 20px auto;
+    max-width: 80%;
+}
+
+.card button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: rgb(207, 19, 19);
+    background-color: rgb(252, 252, 252);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 2px;
+}
+
+/* Efeito de hover no botão */
+.card button:hover {
+    background-color: rgba(228, 7, 7, 0.733);
+    color: #000;
+}
