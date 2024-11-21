@@ -12,13 +12,13 @@ export default function Home() {
         });
     }, []);
 
-    const scrollToMiddle = () => {
+    const scrollToMiddle = (e) => {
+        e.preventDefault(); // Previne comportamento padrão
         window.scrollTo({
-            top: window.innerHeight / 1,  // Define a metade da altura da tela
-            behavior: "smooth"
+            top: window.innerHeight / 1, // Define a metade da altura da tela
+            behavior: "smooth",
         });
     };
-
     return (
         <>
             <header className='cabecalho'>
