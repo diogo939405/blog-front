@@ -1,9 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Trabalho.css'
 import { Container, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Trabalho() {
+    const apiDados = import.meta.env.VITE_Api_Dados
+    const { id } = useParams()
+    const navigate = useNavigate()
+    const [info, setInfo] = useState([])
+
+    useEffect(() => {
+        axios.get(`${apiDados}${id}`)
+            .then(respo => {
+                console.log(respo.data); // Verifique a estrutura aqui
+                setInfo(respo.data); // Supondo que respo.data seja um array
+                console.log(info);
+                console.log(Array.isArray(info));
+            })
+            .catch(error => console.log('Erro ao buscar os dados:', error));
+    }, [id, apiDados])
 
     useEffect(() => {
         window.scrollTo({
@@ -11,7 +27,19 @@ export default function Trabalho() {
             behavior: "smooth"
         })
     }, [])
-    const navigate = useNavigate()
+
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+
+
+
+
+
     return (
         <>
             <header className='cabecalho-trabalho'>
@@ -31,15 +59,22 @@ export default function Trabalho() {
 
             <main className='trabalho-body'>
                 <div className='summary'>
+
                     <p className='text-sumary'>Hermeneutics is the study of interpretation. Hermeneutics plays a role in a number of disciplines whose subject matter demands interpretative approaches, characteristically, because the disciplinary subject matter concerns the meaning of human intentions, beliefs, and actions, or the meaning of human experience as it is preserved in the arts and literature, historical testimony, and other artifacts. Traditionally, disciplines that rely on hermeneutics include theology, especially Biblical studies, jurisprudence, and medicine, as well as some of the human sciences, social sciences, and humanities. In such contexts, hermeneutics is sometimes described as an auxiliary study of the arts, methods, and foundations of research appropriate to a respective disciplinary subject matter (Grondin 1994, 1). For example, in theology, Biblical hermeneutics concerns the general principles for the proper interpretation of the Bible. More recently, applied hermeneutics has been further developed as a research method for a number of disciplines (see, for example, Moules inter alia 2015).</p>
                     <ul className='summaryList'>
-                        <p>sumario</p>
-                        <li><a> capitulo 1</a> </li>
-                        <li><a> capitulo 2</a> </li>
-                        <li><a> capitulo 3</a> </li>
-                        <li><a> capitulo 4</a> </li>
-                        <li><a> capitulo 5</a> </li>
-                        <li><a> capitulo 6</a> </li>
+                        <p>Sumario</p>
+
+                        {
+                            info.capitulos && info.capitulos.length > 0 ? (
+                                info.capitulos.map((capitulo, index) => (
+                                    <li className='sumario-link' key={index} onClick={() => scrollToSection(`capitulo${index + 1}`)}>
+                                        {capitulo.titulo}
+                                    </li>
+                                ))
+                            ) : (
+                                <p>Nenhum capitulo disponível.</p>
+                            )
+                        }
 
                     </ul>
                 </div>
@@ -47,31 +82,18 @@ export default function Trabalho() {
                     <h1>titulo</h1>
                 </div>
 
-                <section className='section-trabalho'>
-                    <h2>titulo</h2>
-                    <p>In hermeneutics, interpretive experience is typically clarified in reference to understanding. In this context, when we say that we understand, what we mean is that we have really gotten at something through an attempt at interpretation; and, when we say we do not understand, we mean that we have not really gotten anywhere at all with our interpretation. For this reason, understanding can be described as a success of interpretation (even if, since Heidegger, understanding is more commonly described as a fulfillment, realization, or enactment). In hermeneutics, such success of understanding is not measured by norms and methods typical of the modern natural sciences and quantitative social sciences, such as whether our understanding derives from a repeatable experiment, nor by norms typical of much of modern philosophy, such as whether our understanding has indubitable epistemic foundations.</p>
-                </section>
-                <section className='section-trabalho'>
-                    <h2>titulo2</h2>
-                    <p>In hermeneutics, interpretive experience is typically clarified in reference to understanding. In this context, when we say that we understand, what we mean is that we have really gotten at something through an attempt at interpretation; and, when we say we do not understand, we mean that we have not really gotten anywhere at all with our interpretation. For this reason, understanding can be described as a success of interpretation (even if, since Heidegger, understanding is more commonly described as a fulfillment, realization, or enactment). In hermeneutics, such success of understanding is not measured by norms and methods typical of the modern natural sciences and quantitative social sciences, such as whether our understanding derives from a repeatable experiment, nor by norms typical of much of modern philosophy, such as whether our understanding has indubitable epistemic foundations.</p>
-                </section>
-                <section className='section-trabalho'>
-                    <h2>titulo3</h2>
-                    <p>In hermeneutics, interpretive experience is typically clarified in reference to understanding. In this context, when we say that we understand, what we mean is that we have really gotten at something through an attempt at interpretation; and, when we say we do not understand, we mean that we have not really gotten anywhere at all with our interpretation. For this reason, understanding can be described as a succes of interpretation (even if, since Heidegger, understanding is more commonly described as a fulfillment, realization, or enactment). In hermeneutics, such success of understanding is not measured by norms and methods typical of the modern natural sciences and quantitative social sciences, such as whether our understanding derives from a repeatable experiment, nor by norms typical of much of modern philosophy, such as whether our understanding has indubitable epistemic foundations.</p>
-                </section>
-                <section className='section-trabalho'>
-                    <h2>titulo4</h2>
-                    <p>In hermeneutics, interpretive experience is typically clarified in reference to understanding. In this context, when we say that we understand, what we mean is that we have really gotten at something through an attempt at interpretation; and, when we say we do not understand, we mean that we have not really gotten anywhere at all with our interpretation. For this reason, understanding can be described as a success of interpretation (even if, since Heidegger, understanding is more commonly described as a fulfillment, realization, or enactment). In hermeneutics, such success of understanding is not measured by norms and methods typical of the modern natural sciences and quantitative social sciences, such as whether our understanding derives from a repeatable experiment, nor by norms typical of much of modern philosophy, such as whether our understanding has indubitable epistemic foundations.</p>
-                </section>
-                <section className='section-trabalho'>
-                    <h2>titulo5</h2>
-                    <p>In hermeneutics, interpretive experience is typically clarified in reference to understanding. In this context, when we say that we understand, what we mean is that we have really gotten at something through an attempt at interpretation; and, when we say we do not understand, we mean that we have not really gotten anywhere at all with our interpretation. For this reason, understanding can be described as a success of interpretation (even if, since Heidegger, understanding is more commonly described as a fulfillment, realization, or enactment). In hermeneutics, such success of understanding is not measured by norms and methods typical of the modern natural sciences and quantitative social sciences, such as whether our understanding derives from a repeatable experiment, nor by norms typical of much of modern philosophy, such as whether our understanding has indubitable epistemic foundations.</p>
-                </section>
-                <section className='section-trabalho'>
-                    <h2>titulo6</h2>
-                    <p>In hermeneutics, interpretive experience is typically clarified in reference to understanding. In this context, when we say that we understand, what we mean is that we have really gotten at something through an attempt at interpretation; and, when we say we do not understand, we mean that we have not really gotten anywhere at all with our interpretation. For this reason, understanding can be described as a success of interpretation (even if, since Heidegger, understanding is more commonly described as a fulfillment, realization, or enactment). In hermeneutics, such success of understanding is not measured by norms and methods typical of the modern natural sciences and quantitative social sciences, such as whether our understanding derives from a repeatable experiment, nor by norms typical of much of modern philosophy, such as whether our understanding has indubitable epistemic foundations.</p>
-                </section>
-            </main>
+                {info.capitulos && info.capitulos.length > 0 ? (
+                    info.capitulos.map((capitulo, index) => (
+                        <section key={index} id={`capitulo${index + 1}`}>
+                            <h3>{capitulo.titulo}</h3>
+                            <p>{capitulo.texto}</p>
+                        </section>
+                    ))
+                ) : (
+                    <p>Sem capítulos para mostrar.</p>
+                )}
+
+            </main >
         </>
     )
 }

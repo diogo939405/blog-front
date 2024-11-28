@@ -1,62 +1,47 @@
+import { useEffect, useState } from 'react';
 import './Cards.css';
 import { useNavigate } from 'react-router-dom';
 
-function Cards() {
+import PropTypes from 'prop-types';
+
+function Cards({ dados, search }) {
     const navigate = useNavigate();
-    // const apiDados = import.meta.env.VITE_Api_Dados
-
-    // const handleClick = (id) => {
-    //     navigate(`/trabalho/${id}`);
-    // };
 
 
-
-    const handleClick = (e) => {
-        e.preventDefault(); // Evita o comportamento padrão do botão
-        navigate(`/trabalho/`);
+    const handleClick = (id) => {
+        navigate(`/trabalho/${id}`);
+        console.log(id);
     };
+
+    const filteredDados = dados.filter((item) =>
+        search === '' || item.titulo.toLowerCase().includes(search.toLowerCase())
+    );
     return (
         <div className='corpo-card'>
-            <h2>Nossos Projetos</h2>
             <div className='cards'>
-                <div className="card">
-                    <h3>¡Congratulations!</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit ligula fusce urna nisl, quam conubia nam sapien id penatibus.</p>
-                    <button onClick={handleClick}>Continue</button>
-                </div>
-                <div className="card">
-                    <h3>¡Congratulations!</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit ligula fusce urna nisl, quam conubia nam sapien id penatibus.</p>
-                    <button onClick={handleClick}>Continue</button>
-                </div>
-                <div className="card">
-                    <h3>¡Congratulations!</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit ligula fusce urna nisl, quam conubia nam sapien id penatibus.</p>
-                    <button onClick={handleClick}>Continue</button>
-                </div>
-                {/* Adicione mais cards aqui, que serão automaticamente organizados em fileiras de três */}
-            </div>
-
-            <div className='cards'>
-                <div className="card">
-                    <h3>¡Congratulations!</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit ligula fusce urna nisl, quam conubia nam sapien id penatibus.</p>
-                    <button onClick={handleClick}>Continue</button>
-                </div>
-                <div className="card">
-                    <h3>¡Congratulations!</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit ligula fusce urna nisl, quam conubia nam sapien id penatibus.</p>
-                    <button onClick={handleClick}>Continue</button>
-                </div>
-                <div className="card">
-                    <h3>¡Congratulations!</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit ligula fusce urna nisl, quam conubia nam sapien id penatibus.</p>
-                    <button onClick={handleClick}>Continue</button>
-                </div>
-                {/* Adicione mais cards aqui, que serão automaticamente organizados em fileiras de três */}
+                {filteredDados.length > 0 ? (
+                    filteredDados.map((item) => (
+                        <div key={item._id} className="card">
+                            <h3>{item.titulo}</h3>
+                            <p>{item.descricao}</p>
+                            <button onClick={() => handleClick(item._id)}>Continue</button>
+                        </div>
+                    ))
+                ) : (
+                    <div className="no-results">
+                        <p>Nenhum resultado encontrado.</p>
+                    </div>
+                )}
             </div>
         </div>
     );
+
 }
+
+Cards.propTypes = {
+    dados: PropTypes.array,
+    search: PropTypes.string,
+
+};
 
 export default Cards;

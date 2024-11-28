@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
     margin: 0;
@@ -11,7 +11,7 @@
 .cabecalho {
     /* background-color: bisque; */
        background-image: linear-gradient(rgba(0, 0, 0, 0.3),
-            rgba(0, 0, 0, 0.3)), url('../../assets/WhatsApp-Image-2024-11-13-at-11.08.23.png');
+            rgba(0, 0, 0, 0.3)), url('../../assets/slide_5.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     color: #ffffff;
@@ -29,7 +29,8 @@
     align-items: center;
    background-color: #f5f5f5; /* Adiciona uma cor de fundo leve */
     padding: 40px 20px;
-    height: 100vh;
+    height: 80vh;
+    
 }
 
 .principal-row {
@@ -72,9 +73,48 @@
     width: 10vw;
 }
 
+.titulo-card{
+    display: flex;
+    justify-content: center;
+    margin-top: -10vh;
+    margin-bottom: 20px;
+}
+
+.titulo-card h2{
+    color: rgba(0, 0, 0, 0.911);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 4px;
+    font-weight: 500;
+    text-shadow: #0e000067 2px 2px 2px;
+}
+
 .corpo-button button:hover {
     background-color: #f51515ea;
     transform: scale(1.2);
 }
 
+.input-pesquisar[type="text"] {
+    width: 100%;
+    max-width: 400px; /* Define um tamanho máximo */
+    padding: 10px 15px; /* Espaçamento interno */
+    margin: 20px 0; /* Espaçamento externo */
+    border: 2px solid rgba(0, 0, 0, 0.2); /* Borda com leve transparência */
+    border-radius: 20px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-family: 'Poppins', sans-serif; /* Fonte consistente */
+    color: rgba(0, 0, 0, 0.7); /* Cor do texto */
+    outline: none; /* Remove a borda padrão ao focar */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Animação ao focar */
+}
 
+/* Efeito ao focar no input */
+.input-pesquisar[type="text"]:focus {
+    border-color: rgba(241, 55, 55, 0.9); /* Cor de destaque */
+    box-shadow: 0 0 8px rgba(241, 55, 55, 0.5); /* Sombra suave */
+}
+
+/* Placeholder estilizado */
+.input-pesquisar[type="text"]::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Cor mais clara */
+    font-style: italic; /* Estilo diferenciado */
+}

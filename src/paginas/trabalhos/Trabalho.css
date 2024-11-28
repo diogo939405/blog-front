@@ -97,6 +97,12 @@
     transition: transform 0.3s ease; /* Limitar a transição ao 'transform' */
 }
 
+.sumario-link{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
 .textTitle{
     display: flex;
     justify-content: center;
