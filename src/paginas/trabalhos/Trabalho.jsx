@@ -3,6 +3,7 @@ import './Trabalho.css'
 import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import FloatButton from '../../components/floatButtons/FloatButtons';
 
 export default function Trabalho() {
     const apiDados = import.meta.env.VITE_Api_Dados
@@ -33,13 +34,9 @@ export default function Trabalho() {
         }
     };
 
-
-
-
-
-
     return (
         <>
+            <FloatButton />
             <header className='cabecalho-trabalho'>
                 <Container>
                     <Row id='principal-row'>
@@ -58,7 +55,7 @@ export default function Trabalho() {
             <main className='trabalho-body'>
                 <div className='summary'>
 
-                    <p className='text-sumary'>Hermeneutics is the study of interpretation. Hermeneutics plays a role in a number of disciplines whose subject matter demands interpretative approaches, characteristically, because the disciplinary subject matter concerns the meaning of human intentions, beliefs, and actions, or the meaning of human experience as it is preserved in the arts and literature, historical testimony, and other artifacts. Traditionally, disciplines that rely on hermeneutics include theology, especially Biblical studies, jurisprudence, and medicine, as well as some of the human sciences, social sciences, and humanities. In such contexts, hermeneutics is sometimes described as an auxiliary study of the arts, methods, and foundations of research appropriate to a respective disciplinary subject matter (Grondin 1994, 1). For example, in theology, Biblical hermeneutics concerns the general principles for the proper interpretation of the Bible. More recently, applied hermeneutics has been further developed as a research method for a number of disciplines (see, for example, Moules inter alia 2015).</p>
+                    <p className='text-sumary'>{info.descricao}</p>
                     <ul className='summaryList'>
                         <p>Sumario</p>
 
@@ -77,14 +74,23 @@ export default function Trabalho() {
                     </ul>
                 </div>
                 <div className='textTitle'>
-                    <h1>titulo</h1>
+                    <h1>{info.titulo}</h1>
                 </div>
 
                 {info.capitulos && info.capitulos.length > 0 ? (
                     info.capitulos.map((capitulo, index) => (
                         <section key={index} id={`capitulo${index + 1}`}>
-                            <h3>{capitulo.titulo}</h3>
-                            <p>{capitulo.texto}</p>
+                            <div className='capitulo-intro'>
+                                <h2 className='tituloCap'>{capitulo.titulo}</h2>
+                                <p className='textoCap'>{capitulo.texto}</p>
+
+                            </div>
+                            {capitulo.subCapitulos.map((subCapitulos, subIndex) => (
+                                <div key={subIndex} className='subCapitulo'>
+                                    <h4 className='tituloSub'>{subCapitulos.titulo}</h4>
+                                    <p>{subCapitulos.texto}</p>
+                                </div>
+                            ))}
                         </section>
                     ))
                 ) : (

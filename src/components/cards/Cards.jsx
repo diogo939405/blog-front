@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './Cards.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +22,7 @@ function Cards({ dados, search }) {
                     filteredDados.map((item) => (
                         <div key={item._id} className="card">
                             <h3>{item.titulo}</h3>
-                            <p>{item.descricao}</p>
+                            {/* <p>{item.descricao}</p> */}
                             <button onClick={() => handleClick(item._id)}>Continue</button>
                         </div>
                     ))

@@ -99,8 +99,10 @@
 
 .sumario-link{
     cursor: pointer;
-    color: blue;
+    color:#d30f0f;
     text-decoration: underline;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .textTitle{
@@ -108,8 +110,15 @@
     justify-content: center;
     align-items: center;
     margin-top: 15vh;
+    margin-bottom: 5vh;
 }
 
+.textTitle h1{
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    font-family: 'poppins', sans-serif;
+    color: #f50e0ee1;
+}
 .section-trabalho{
     display: flex;
     flex-direction: column;
@@ -117,12 +126,30 @@
     padding: 15px;
 }
 
-.section-trabalho h2{
-    font-size: 1.4rem;
+.capitulo-intro{
+    margin-top: 12vh;
+    margin-bottom: 5vh;
+    padding: 15px 80px;
+    margin-left: 3vw;
+    box-shadow: #00000070 0px 1px 3px;
+}
+
+.tituloCap{
+    font-size: 1.2rem;
     letter-spacing: 2px;
+    margin-top: 2vh;
     margin-bottom: 2vh;
     font-family: 'poppins', sans-serif;
     padding: 5px;
+    color: #f50e0ee1;
+}
+
+.textoCap{
+    font-size: 1rem;
+    margin-bottom: 2vh;
+    font-family: 'poppins', sans-serif;
+    padding: 5px;
+    line-height: 4vh;
 }
 
 .section-trabalho p{
@@ -131,4 +158,18 @@
     font-family: 'poppins', sans-serif;
     padding: 5px;
     line-height: 4vh;
+}
+.subCapitulo{
+    padding: 15px;
+    line-height: 4vh;
+}
+
+.subCapitulo h4{
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-family: 'poppins', sans-serif;
+    padding: 5px;
+    color: #ac1919e1;
 }
