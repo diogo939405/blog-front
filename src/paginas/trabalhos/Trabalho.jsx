@@ -15,11 +15,9 @@ export default function Trabalho() {
             .then(respo => {
                 console.log(respo.data); // Verifique a estrutura aqui
                 setInfo(respo.data); // Supondo que respo.data seja um array
-                console.log(info);
-                console.log(Array.isArray(info));
             })
             .catch(error => console.log('Erro ao buscar os dados:', error));
-    }, [id, apiDados])
+    }, [])
 
     useEffect(() => {
         window.scrollTo({
