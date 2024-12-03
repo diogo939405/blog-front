@@ -89,6 +89,7 @@ export default function Trabalho() {
                                 <div key={subIndex} className='subCapitulo'>
                                     <h4 className='tituloSub'>{subCapitulos.titulo}</h4>
                                     <p>{subCapitulos.texto}</p>
+                                    <span>{subCapitulos.rodape}</span>
                                 </div>
                             ))}
                         </section>
