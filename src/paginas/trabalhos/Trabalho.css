@@ -173,3 +173,14 @@
     padding: 5px;
     color: #ac1919e1;
 }
+
+.subCapitulo span{
+    font-size: 0.7rem;
+    font-style: italic;
+    margin-bottom: 2vh;
+    font-family: 'poppins', sans-serif;
+    padding: 15px;
+    text-decoration: underline;
+    letter-spacing: 1px;
+
+}
